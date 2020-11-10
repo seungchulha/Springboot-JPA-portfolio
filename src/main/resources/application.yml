@@ -22,10 +22,10 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update #create 이라 하면 테이블을 새로 만들겠다고 하는 것 // 최초에만 create 하고 이후에 update 로 변경해줘야한다.
       naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #Entity를 만들때 테이블 을 만들때 자바 파일 변수명데로 만들어주겠다는의미
+      use-new-id-generator-mappings: false #jpa 의 넘버링 전략을 따르지 않겠다는 의미이다
     show-sql: true
     properties:
       hibernate.format_sql: true
