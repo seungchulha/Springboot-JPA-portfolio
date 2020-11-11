@@ -30,10 +30,10 @@ public class Board {
     @Lob // 대용량 데이터 사용시 필요
     private String content; //섬머노트 라이브러리 <html> 테그가 섞여서 디자인이됨.
 
-    @ColumnDefault("0")
     private int count; // 조회수
 
     @ManyToOne(fetch= FetchType.EAGER) // Many = Board , User = One
+
     @JoinColumn(name="userid")
     private User user; //DB 는 오브젝트를 저장할수없다. Foreign Key, 자바는 오브젝트를 저장할수 있다.
 

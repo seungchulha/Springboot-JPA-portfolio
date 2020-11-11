@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 
 <div class="container">
-        <form action="/user/join" method="post">
+        <form>
             <div class="form-group">
                 <label for="username">User Name : </label>
                 <input type="text" class="form-control" placeholder="Enter email" id="username">
@@ -28,7 +28,7 @@
 </div>
 
 <!-- /라고 하면 바로 static 폴더를 찾아간다-->
-<script src="/blog/js/user.js"></script>
+<script src="/js/user.js"></script>
 <!-- ../ 한칸위의 폴더로 올라간다 -->
 <%@ include file="../layout/footer.jsp"%>
 

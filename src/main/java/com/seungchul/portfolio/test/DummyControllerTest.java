@@ -70,7 +70,7 @@ public class DummyControllerTest {
     //한 페이지당 2건의 데이터를 리턴 받아보자!!!
     //알아둬야할 기능 pageable
     @GetMapping("/dummy/user")
-    public List<User> pageList(@PageableDefault(size=2, sort="id", direction = Sort.Direction.DESC) Pageable pageable){
+    public Page<User> pageList(@PageableDefault(size=2, sort="id", direction = Sort.Direction.DESC) Pageable pageable){
         Page<User> pagingUser = userRepository.findAll(pageable);
 
         //분기처리
@@ -81,7 +81,7 @@ public class DummyControllerTest {
 //
 //        }
         List<User> users = pagingUser.getContent();
-        return users;
+        return pagingUser;
     }
 
     //주소로 {id} parameter를 전달 받을 수 있음.
