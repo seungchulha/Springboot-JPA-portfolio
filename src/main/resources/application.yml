@@ -24,7 +24,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update #create 이라 하면 테이블을 새로 만들겠다고 하는 것 // 최초에만 create 하고 이후에 update 로 변경해줘야한다.
+      ddl-auto: create #create 이라 하면 테이블을 새로 만들겠다고 하는 것 // 최초에만 create 하고 이후에 update 로 변경해줘야한다.
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #Entity를 만들때 테이블 을 만들때 자바 파일 변수명데로 만들어주겠다는의미
       use-new-id-generator-mappings: false #jpa 의 넘버링 전략을 따르지 않겠다는 의미이다
@@ -35,3 +35,7 @@ spring:
     jackson:
       serialization:
         fail-on-empty-beans: false
+
+#절대 노출되면 안되는 비밀번호 (카카오 로그인 하는 사람들 모두 비밀번호 이하로 통일 됨) 이게 노출되는 순간 모든 OAuth가 뚤린다고 보면된다.
+cos:
+  key: cos1234

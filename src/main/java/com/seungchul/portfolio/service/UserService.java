@@ -25,6 +25,13 @@ public class UserService {
     private BCryptPasswordEncoder encoder;
 
 
+    @Transactional(readOnly = true)
+    public User 회원찾기(String username){
+        User user = userRepository.findByUsername(username).orElseGet(()->{
+            return new User();
+        });
+        return user;
+    }
 
 //    @Transactional
 //    public int 회원가입(User user){
@@ -62,10 +69,16 @@ public class UserService {
         User persistance = userRepository.findById(user.getId()).orElseThrow(()->{
             return new IllegalArgumentException("회원찾기 실패");
         });
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        persistance.setPassword(encPassword);
-        persistance.setEmail(user.getEmail());
+
+        //validation check .. updateForm.jsp 의 비밀번호 수정에 oAuth 값에 따라 비밀번호 수정이 가능하게 하는 부분 보호하는 shell => oauth 필드 에 값이 없으면 수정 가능
+        if(persistance.getOauth() == null || persistance.getOauth().equals("")){
+            String rawPassword = user.getPassword();
+            String encPassword = encoder.encode(rawPassword);
+            persistance.setPassword(encPassword);
+            persistance.setEmail(user.getEmail());
+        }
+
+
         persistance.setPhone(user.getPhone());
 
         // 회원 수정 함수 종료시 = 서비스 종료 = 트랜잭션 종료 = commit 이 자동으로 됩니다.

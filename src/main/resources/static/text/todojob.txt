@@ -38,3 +38,47 @@ OAuth로 로그인 했을 때, 내 홈페이지에서 관리하는 기존 세션
 특강 내용은 좀 어려워요. ㅎ 저도 어려워요!!
 
 https://github.com/codingspecialist 에 가시면 이미 자료는 다 있습니다.
+
+1. 웹서버 주소 : http://localhost:8000
+2. 클라이언트키:  02778e14d6fc171dcf7ffb9b3089baa7 (rest api)
+
+3. 카카오 로그인 요청 콜백주소 :
+http://localhost:8000/auth/kakao/callback
+
+4. 카카오 로그아웃 요청 콜백주소 :
+http://localhost:8000/auth/kakao/logout
+
+5. 카카오 동의 구성
+User 오브젝트 : id(번호), username, password, email, phone
+카카오로부터 받을 정보 : profile 정보 ( 필수 ) , email (선택)
+
+OAuth 란 ? --> Open Auth 를 의미하며 인증처리를 대신해주는 것
+
+
+6. 로그인 요청주소 (GET)
+https://kauth.kakao.com/oauth/authorize?client_id=02778e14d6fc171dcf7ffb9b3089baa7&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code
+
+7. 응답받은 주소
+http://localhost:8000/auth/kakao/callback?code=TTv3jpnApefWC5tonOOsw7wmAEzZ-QQlu9FwW6pMhpxVTRzPvZr02Y0rurxEomiWk75BIwo9cpcAAAF1u8HGHw
+
+8. 토큰 발급 요청 주소 (POST) --> http body에 데이터 전달 (5가지 데이터를 담아라)
+
+요청 주소 : https://kauth.kakao.com/oauth/token
+헤더 값
+Content-type: application/x-www-form-urlencoded;charset=utf-8 //--> (key=value)
+
+바디데이터
+grant_type = authorization_code로 (고정)
+client_id = 02778e14d6fc171dcf7ffb9b3089baa7
+redirect_uri = http://localhost:8000/auth/kakao/callback
+code = {동적인 응답받은 코드를 넣으면 된다.}
+
+9. 토큰을 통한 사용지 정보조회 (get/ post 둘다 지원) 하지만 우리는 post 로 하겠다
+요청주소 : http://kapi.kakao.com/v2/user/me
+
+헤더값
+Authorization: Bearer {access_token}
+Content-type: application/x-www-form-urlencoded;charset=utf-8
+
+
+

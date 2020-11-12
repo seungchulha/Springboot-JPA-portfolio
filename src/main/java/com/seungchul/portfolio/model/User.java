@@ -26,7 +26,7 @@ public class User {
     private int id; // sequence, auto_increment
 
     //결론적으로 나머지는 다 자동 생성 되는 데이터이기에 우리는 username, password, email, phoneNum만 받으면 된다
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 100)
     private String username; // 아이디
 
     @Column(nullable = false, length = 100) //넉넉하게 주는 이유는 우리가 넣는 이 패스워드를 해쉬로 바꿔서 암호화 할것이기 때문에 넉넉하게
@@ -35,13 +35,15 @@ public class User {
     @Column(nullable = false, length = 50, unique = true)
     private String email;
 
-    @Column(nullable = false, length = 30, unique = true)
+    @Column(nullable = true, length = 30, unique = true)
     private String phone;
 
     //@ColumnDefault("'user'") //' ' 사이에 넣는 것은 이것을 문자임을 알려주려고 하는것
     // DB 는 RoleType 이라는게 없다
     @Enumerated(EnumType.STRING)
     private RoleType role; // Enum을 쓰는게 좋다. (어떤 데이터에 도메인을 만들어줄수있는게 Enum) //Admin , user, manager
+
+    private String oauth; // kakao , google 어떤걸로 가입했는지 알게해주는 것;
 
     @CreationTimestamp // 시간이 자동으로 입력된
     private Timestamp createDate;
