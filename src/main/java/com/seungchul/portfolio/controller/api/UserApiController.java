@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,5 +48,10 @@ public class UserApiController {
 
     //스프링 시큐리티를 이용해서 로그인
 
+    @PutMapping("/user")
+    public ResponseDto<Integer> update(@RequestBody User user){ //@RequestBody 를 넣어야 json 을 받을수 있다, 아닐시 key=value 값, x-www-form-urlencoded 만 받을수 있다
+        userService.회원수정(user);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
 
 }

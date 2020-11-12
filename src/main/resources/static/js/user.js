@@ -5,6 +5,10 @@ let index = {
             this.save();
         });
 
+        $("#btn-update").on("click", ()=>{ // function(){} 이 아닌 ()=> 의 화살표 함수를 사용하는 이유는 this 를 바인딩 하기 위함이다.!!!
+            this.update();
+        });
+
         // 일반 로그인 ( x springboot security )
         // $("#btn-login").on("click", ()=>{ // function(){} 이 아닌 ()=> 의 화살표 함수를 사용하는 이유는 this 를 바인딩 하기 위함이다.!!!
         //     this.login();
@@ -70,6 +74,27 @@ let index = {
     // }
 
 
+    update: function(){
+        let data = {
+            id: $("#id").val(),
+            password: $("#password").val(),
+            email: $("#email").val(),
+            phone: $("#phone").val()
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "/user",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType:"json"
+        }).done(function(resp){
+            alert("회원정보 수정이 완료되었습니다.");
+            location.href = "/";
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    } ,
 }
 
 index.init();
