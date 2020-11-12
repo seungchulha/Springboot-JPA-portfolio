@@ -4,6 +4,10 @@ import com.seungchul.portfolio.model.RoleType;
 import com.seungchul.portfolio.model.User;
 import com.seungchul.portfolio.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +23,8 @@ public class UserService {
 
     @Autowired // 얘를 걸면 아래에서 해쉬화 한다
     private BCryptPasswordEncoder encoder;
+
+
 
 //    @Transactional
 //    public int 회원가입(User user){
