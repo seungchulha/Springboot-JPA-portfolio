@@ -1,5 +1,6 @@
 package com.seungchul.portfolio.model;
 
+import com.seungchul.portfolio.dto.ReplySaveRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,13 +25,24 @@ public class Reply {
     private String content;
 
     @ManyToOne //여러개의 댓글은 하나의 게시글에 올수 있다.
-    @JoinColumn(name="boardid")
+    @JoinColumn(name="boardId")
     private Board board;
 
     @ManyToOne
-    @JoinColumn(name="userid")
+    @JoinColumn(name="userId")
     private User user;
 
     @CreationTimestamp
     private Timestamp createDate;
+
+    @Override
+    public String toString() {
+        return "Reply{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", board=" + board +
+                ", user=" + user +
+                ", createDate=" + createDate +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package com.seungchul.portfolio.controller.api;
 
 import com.seungchul.portfolio.config.auth.PrincipalDetail;
+import com.seungchul.portfolio.dto.ReplySaveRequestDto;
 import com.seungchul.portfolio.dto.ResponseDto;
 import com.seungchul.portfolio.model.Board;
 import com.seungchul.portfolio.model.Reply;
@@ -39,11 +40,20 @@ public class BoardApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
+    //원래는 데이터를 받을 때 컨트롤러에서 dto를 만들어주는 것이 좋다.
+    //dto를 굳이 사용하지 않는 이유는 !!! 굳이 이러한 조그마한 프로젝트에서 dto까지 만들어가며 할 필요가없다
+    //하지만 프로젝트가 커지면 필드가 많아지며 넘어오는 수 많은 것들을 오브젝트로 처리하는 것은 좋지 못하다.
+//    @PostMapping("/api/board/{boardId}/reply")
+//    public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal){
+//
+//        boardService.댓글쓰기(principal.getUser(), boardId, reply);
+//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+//    }
     @PostMapping("/api/board/{boardId}/reply")
-    public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal){
-
-        boardService.댓글쓰기(principal.getUser(), boardId, reply);
+    public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto){
+        boardService.댓글쓰기(replySaveRequestDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
+
 
 }

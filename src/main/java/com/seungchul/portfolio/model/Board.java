@@ -34,10 +34,10 @@ public class Board {
     private int count; // 조회수
 
     @ManyToOne(fetch= FetchType.EAGER) // Many = Board , User = One
-    @JoinColumn(name="userid")
+    @JoinColumn(name="userId")
     private User user; //DB 는 오브젝트를 저장할수없다. Foreign Key, 자바는 오브젝트를 저장할수 있다.
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) //mappedBy 가 적혀있으면 연관관계의 주인이 아니다 ==> 난 FK가 아닙니다. DB에 컬럼을 만들지 마세요를 의미한다 // join 문을 통해 reply 정보를 얻어내는 용도의 list
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE) //mappedBy 가 적혀있으면 연관관계의 주인이 아니다 ==> 난 FK가 아닙니다. DB에 컬럼을 만들지 마세요를 의미한다 // join 문을 통해 reply 정보를 얻어내는 용도의 list
     @JsonIgnoreProperties({"board"}) //무한참조 방지하기위한 방법
     @OrderBy("id desc")
     private List<Reply> replys;
