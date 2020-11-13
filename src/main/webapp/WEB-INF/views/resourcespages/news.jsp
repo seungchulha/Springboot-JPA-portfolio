@@ -11,7 +11,8 @@
                         +"' target='_blank'>"
                         + response.articles[i].title +"</a></h1>"+ response.articles[i].source.name
                         + "<br>" + response.articles[i].description
-                        +"</div>";            }
+                        +"</div>";
+                }
             })
     }
 

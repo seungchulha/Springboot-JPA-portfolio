@@ -57,5 +57,11 @@ public class BoardController {
     public String globalIssue(){
         return "/contents/globalIssue";
     }
+
+    @GetMapping("/news/test1")
+    public String test1(){
+        return "/contents/test";
+    }
+
 }
 
