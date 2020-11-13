@@ -3,6 +3,7 @@ package com.seungchul.portfolio.controller.api;
 import com.seungchul.portfolio.config.auth.PrincipalDetail;
 import com.seungchul.portfolio.dto.ResponseDto;
 import com.seungchul.portfolio.model.Board;
+import com.seungchul.portfolio.model.Reply;
 import com.seungchul.portfolio.model.User;
 import com.seungchul.portfolio.service.BoardService;
 import com.seungchul.portfolio.service.UserService;
@@ -35,6 +36,13 @@ public class BoardApiController {
     @PutMapping("/api/board/{id}")
     public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board){
         boardService.글수정하기(id, board);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    @PostMapping("/api/board/{boardId}/reply")
+    public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal){
+
+        boardService.댓글쓰기(principal.getUser(), boardId, reply);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
