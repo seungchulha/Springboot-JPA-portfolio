@@ -37,7 +37,7 @@ let index = {
             contentType: "application/json; charset=utf-8", // 위의 것은 html body 데이터 이기에 밑에 컨텐트 타입을 만들어주는것이다 (Body Data 가 어떤 타입인지 명시해주는것
             dataType:"json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 버퍼로 오기에 String (문자열) 이다. 생긴 것은 json 이라면 ==> dataType에 json 임을 알려주면 javascript object 로 변경
         }).done(function(resp){
-
+            console.log(resp.status)
             if(resp.status === 500){
                 alert("회원가입이 실패하였습니다.");
             }else{
@@ -46,7 +46,8 @@ let index = {
             }
 
         }).fail(function(error){
-            alert(JSON.stringify(error));
+            // alert(JSON.stringify(error));
+            alert("해당 아이디 또는 해당 전화번호로 가입된 계정이 존재합니다")
         }); // ajax 통신을 이용해서 4개의 parameter를 json 으로 변경하여 insert 요청을 할 것
     } ,
 

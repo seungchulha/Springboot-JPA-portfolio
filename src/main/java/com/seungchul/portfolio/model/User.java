@@ -26,7 +26,7 @@ public class User {
     private int id; // sequence, auto_increment
 
     //결론적으로 나머지는 다 자동 생성 되는 데이터이기에 우리는 username, password, email, phoneNum만 받으면 된다
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String username; // 아이디
 
     @Column(nullable = false, length = 100) //넉넉하게 주는 이유는 우리가 넣는 이 패스워드를 해쉬로 바꿔서 암호화 할것이기 때문에 넉넉하게
