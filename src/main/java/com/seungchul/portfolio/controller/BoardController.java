@@ -51,5 +51,11 @@ public class BoardController {
     public String saveForm(){
         return "board/saveForm";
     }
+
+    //////////////////// 강의 이후 내가 만든 페이지 ////////////////////////
+    @GetMapping("/news/globalIssue")
+    public String globalIssue(){
+        return "/contents/globalIssue";
+    }
 }
 

@@ -44,6 +44,15 @@
             <c:otherwise>
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link" href="/news/globalIssue">Global Issue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Stock Market</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">User Board</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/board/saveForm">글쓰기</a>
                     </li>
                     <li class="nav-item">
