@@ -33,7 +33,7 @@ let index = {
             dataType:"json"
         }).done(function(resp){
             alert("글쓰기가 완료되었습니다.");
-            location.href = "/";
+            location.href = "/board/list";
         }).fail(function(error){
             alert(JSON.stringify(error));
         });

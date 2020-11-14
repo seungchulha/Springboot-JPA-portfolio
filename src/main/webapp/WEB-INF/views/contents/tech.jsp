@@ -2,7 +2,6 @@
 
 <%@ include file="../layout/header.jsp"%>
 
-
 <div class="container">
     <div id="newsList"></div>
 </div>
@@ -11,12 +10,15 @@
 
 <script>
     $.ajax({
-        url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=8a74e2d7e6cb4c39a48f322f555895c9",
+        url: "https://newsapi.org/v2/top-headlines?q=tech&apiKey=8a74e2d7e6cb4c39a48f322f555895c9",
         dataType: "json",
         type: "GET",
         contentType: "application/json; charset=utf-8",
+        category: "technology",
         success: function(data) {
             console.log(data);
+            console.log(data.articles.length)
+
             var newsCard = "";
             for(var i = 0; i < data.articles.length; i++){
                 newsCard += "<div class='card'>";
@@ -37,5 +39,3 @@
 </script>
 </body>
 </html>
-
-

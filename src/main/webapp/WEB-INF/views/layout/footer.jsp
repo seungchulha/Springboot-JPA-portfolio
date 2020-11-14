@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<style>
+    #footer{
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        color: black;
+    }
+</style>
 <br/>
-<div class="jumbotron text-center" style="margin-bottom:0">
+<div id="footer" class="jumbotron text-center" style="margin-bottom:0">
     <p>Created by Seungchul Ha</p>
     <p>📞 010-7311-2202</p>
     <p>🏠 서울시 서초구 방배3동 효령로 20 가길 30</p>

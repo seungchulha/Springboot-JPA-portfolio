@@ -36,6 +36,20 @@ spring:
       serialization:
         fail-on-empty-beans: false
 
+  #OAuth
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 470976221479-6v3rg4shi1n2g3ge768hfpu9urkiddkl.apps.googleusercontent.com
+            clientSecret: DTeNR55f6dOB8pJ5oHsg2aRK
+            scope:
+              - email
+              - profile
+
+
 #절대 노출되면 안되는 비밀번호 (카카오 로그인 하는 사람들 모두 비밀번호 이하로 통일 됨) 이게 노출되는 순간 모든 OAuth가 뚤린다고 보면된다.
 cos:
   key: cos1234
+

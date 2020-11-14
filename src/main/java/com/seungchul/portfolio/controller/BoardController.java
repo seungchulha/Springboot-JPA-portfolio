@@ -34,6 +34,13 @@ public class BoardController {
         return "index"; // viewResolver 작동 !! 상단의 모델을 들고 간다.
     }
 
+    @GetMapping("/board/list")
+    public String boardList(Model model, @PageableDefault(size=5, sort="id", direction = Sort.Direction.DESC) Pageable pageable){
+        // /WEB-INF/views/index.jsp
+        model.addAttribute("boards", boardService.글목록(pageable));
+        return "board/boardlist"; // viewResolver 작동 !! 상단의 모델을 들고 간다.
+    }
+
     @GetMapping("/board/{id}")
     public String findById(@PathVariable int id, Model model){
         model.addAttribute("board", boardService.글상세보기(id));
@@ -58,10 +65,24 @@ public class BoardController {
         return "/contents/globalIssue";
     }
 
-    @GetMapping("/news/test1")
-    public String test1(){
-        return "/contents/test";
+    @GetMapping("/stockmarket")
+    public String stockmarket(){
+        return "/contents/stockmarket";
     }
 
+    @GetMapping("/currencies")
+    public String currencies(){
+        return "/contents/currencies";
+    }
+
+    @GetMapping("/tech")
+    public String techNews(){
+        return "/contents/tech";
+    }
+
+    @GetMapping("/news")
+    public String queryNews(){
+        return "/contents/newssearch";
+    }
 }
 

@@ -55,6 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                     .loginPage("/auth/loginForm") // 로그인 form 의로 자동이동
                     .loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 주소로 요청 오는 로그인을 가로채서 대신 로그인해준다.
-                    .defaultSuccessUrl("/");
+                    .defaultSuccessUrl("/")
+                    .and()
+                    .oauth2Login()
+                    .loginPage("/auth/loginForm"); // 구글 로그인이 완료된 뒤의 후처리가 필요함.
     }
 }

@@ -2,16 +2,16 @@
 
 <%@ include file="../layout/header.jsp"%>
 
-
 <div class="container">
     <div id="newsList"></div>
 </div>
 
 <%@ include file="../layout/footer.jsp"%>
-
 <script>
+    var query = "apple";
+
     $.ajax({
-        url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=8a74e2d7e6cb4c39a48f322f555895c9",
+        url: "https://newsapi.org/v2/everything?q=" + query+ "&apiKey=8a74e2d7e6cb4c39a48f322f555895c9",
         dataType: "json",
         type: "GET",
         contentType: "application/json; charset=utf-8",
@@ -34,10 +34,6 @@
             document.getElementById("newsList").innerHTML = newsCard;
         }
     });
-
-
-
-
 </script>
 </body>
 </html>

@@ -5,13 +5,24 @@
 <sec:authorize access="isAuthenticated()">
     <sec:authentication property="principal" var="principal"/>
 </sec:authorize>
-
+<style>
+    body {
+        height: 100%;
+        background:
+                linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Portfolio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -19,10 +30,12 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
-<body style="background-image: url('/image/sampleBack.jpg')">
+<body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <a href="/"><h1>Bloomberg</h1></a>
+    <a href="/" style="text-decoration: none; color: black;"><h1>Apex</h1></a>
 </div>
 <%--<h1>${principal}</h1>--%>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -47,13 +60,19 @@
             <c:otherwise>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/news/globalIssue">Global Issue</a>
+                        <a class="nav-link" href="/news/globalIssue">Global</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Stock Market</a>
+                        <a class="nav-link" href="/stockmarket">Stock</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">User Board</a>
+                        <a class="nav-link" href="/board/list">Board</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/currencies">Currencies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tech">Tech</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/board/saveForm">글쓰기</a>
