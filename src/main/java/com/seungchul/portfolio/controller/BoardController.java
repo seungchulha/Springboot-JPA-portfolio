@@ -94,5 +94,10 @@ public class BoardController {
     public String stocktest(){
         return "/contents/stocktest";
     }
+
+    @GetMapping("/about")
+    public String about(){
+        return "/about/about";
+    }
 }
 

@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http    //해당 주소로 들어오는 것을 허용 한다 (인증 없이)
                 .csrf().disable()// csrf 토큰 비활성화 ( 테스트시 걸어두는 게 좋음)
                 .authorizeRequests()
-                    .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**", "/dummy/**")
+                    .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**", "/dummy/**", "/about")
                     .permitAll()
                     .anyRequest() // 아닌 모든 페이지는 인증이 필요해 라는 의미이다
                     .authenticated()
