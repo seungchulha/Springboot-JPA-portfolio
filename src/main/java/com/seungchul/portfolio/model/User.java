@@ -43,7 +43,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleType role; // Enum을 쓰는게 좋다. (어떤 데이터에 도메인을 만들어줄수있는게 Enum) //Admin , user, manager
 
-    private String oauth; // kakao , google 어떤걸로 가입했는지 알게해주는 것;
+    private String provider; // kakao , google 어떤걸로 가입했는지 알게해주는 것;
+
+    private String providerId; //그계정 번호
 
     @CreationTimestamp // 시간이 자동으로 입력된
     private Timestamp createDate;

@@ -5,23 +5,13 @@
 <sec:authorize access="isAuthenticated()">
     <sec:authentication property="principal" var="principal"/>
 </sec:authorize>
-<style>
-    body {
-        height: 100%;
-        background:
-                linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
-    }
-</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Portfolio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -34,7 +24,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-<div class="jumbotron text-center" style="margin-bottom:0">
+<div class="jumbotron text-center bg-light" style="margin-bottom:0">
     <a href="/" style="text-decoration: none; color: black;"><h1>Apex</h1></a>
 </div>
 <%--<h1>${principal}</h1>--%>
@@ -43,8 +33,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-
+    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 
         <c:choose>
             <c:when test="${empty principal}">
@@ -63,7 +52,11 @@
                         <a class="nav-link" href="/news/globalIssue">Global</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/business">Business</a>
+                    </li>
+                    <li class="nav-item dropdown">
                         <a class="nav-link" href="/stockmarket">Stock</a>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/board/list">Board</a>
@@ -71,11 +64,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/currencies">Currencies</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/tech">Tech</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Commodities
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="/ddubeok2/free/list">자유게시판</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/ddubeok2/post/list">후기게시판</a>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/board/saveForm">글쓰기</a>
+                        <a class="nav-link" href="/tech">Tech</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/user/updateForm">회원정보</a>
@@ -90,3 +91,11 @@
     </div>
 </nav>
 <br/>
+
+<script>
+    $(function() {
+        $('a[data-val]').on('click', function() {
+
+        });
+    });
+</script>

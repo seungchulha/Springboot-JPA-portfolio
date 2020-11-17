@@ -15,10 +15,16 @@
         <button onclick="stockinfo()"><i class="fa fa-search"></i></button>
     </div><br><br>
 
-        <div id="info"></div><br>
-        <div id="chart_div"></div><br>
-        <div id="newsrelated"></div>
+    <div class="d-flex justify-content-center">
+        <div id="info" class="card-head"></div>
+        <div id="chart_div" class="card-body"></div>
+    </div>
 
+    <br>
+
+    <div id="newsrelated"></div>
+
+    <div id="allStock"></div>
     </div>
 
 <%@ include file="../layout/footer.jsp"%>
@@ -27,6 +33,42 @@
         var searchArr = document.getElementById("company").value.split(' : ');
         var search = searchArr[0];
         var search2 = searchArr[1];
+
+        var mktname = document.getElementById("marketType").value;
+
+        $.ajax({
+            url: 'https://old.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=' + mktname + '&render=download',
+            dataType: 'text',
+            success: function (data) {
+                //console.log(data);
+
+                let stockList = data.split('\r\n').map(stock => {
+                    return stock.replace(/",/g, "").replace(/\"/g, "|").split("|").splice(1);
+                });
+
+                stockList.pop();
+                stockList.shift();
+                let stocks = stockList.map(stock => {
+                    return {
+                        symbol: stock[0],
+                        name: stock[1],
+                        lastSale: stock[2],
+                        marketCap: stock[3],
+                        ipoYear: stock[4],
+                        sector: stock[5],
+                        industry: stock[6],
+                        summaryQuote: stock[7]
+                    }
+                });
+
+                var jsonStock = JSON.stringify(stocks);
+                console.log(jsonStock);
+            }
+        })
+
+
+
+
         $.ajax({
             url: 'https://sandbox.iexapis.com/stable/stock/'+search+'/intraday-prices?token=Tsk_df3c91a755ad47158fdfe4fe990dbe07',
             dataType: 'json',
@@ -85,7 +127,7 @@
                             newsCard += "&nbsp; Published At : " + data.articles[i].publishedAt;
                             newsCard += "</div>";
                             newsCard += "<div class='card-body text-center'>";
-                            newsCard += "<img height='400px' src='" + data.articles[i].urlToImage+ "' alt=''></div>";
+                            newsCard += "<img height='400px' src='" + data.articles[i].urlToImage+ "' alt='' style='width: 100%;'></div>";
                             newsCard += "<div class='card-footer'>";
                             newsCard += "<h4>" + data.articles[i].description + "</h4>";
                             newsCard += "</div></div><br>";
@@ -162,20 +204,52 @@
                 }
             });
 
+
+
+            //document.getElementById("allStock").innerHTML = stockJson;
+
             for (var i = 0; i < stocks.length; i++) {
                 //console.log(stocks[i].symbol);
                 symbols[i] = stocks[i].symbol + " : " + stocks[i].name;
             }
 
-            $( "#company" ).autocomplete({
+            $("#company").autocomplete({
                 source: symbols,
                 minLength: 2
             });
 
-        }
-    }
+        }}
+
+
+
+        // $.ajax({
+        //     url: 'https://cloud.iexapis.com/beta/ref-data/symbols?token=pk_b3b5ead8328c4a89baeea872e7d809dd',
+        //     dataType: 'json',
+        //     type: "GET",
+        //     contentType: "application/json; charset=utf-8",
+        //     success: function (data) {
+        //
+        //         var symbols = [];
+        //
+        //         for (var i = 0; i < data.length; i++) {
+        //             console.log(data[0].symbol + " : " + data[0].name);
+        //             symbols[i] = data[i].symbol + " : " + data[i].name;
+        //         }
+        //
+        //         $("#company").autocomplete({
+        //             source: symbols,
+        //             minLength: 2
+        //         });
+        //     }
+        //     });
+
+
+
+
 </script>
-</body>
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 

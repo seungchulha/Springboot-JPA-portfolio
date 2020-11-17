@@ -148,7 +148,7 @@ public class UserController {
                 .username(kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId())
                 .password(cosKey)
                 .email(kakaoProfile.getKakao_account().getEmail())
-                .oauth("kakao")
+                .provider("kakao")
                 .build();
 
         // 가입이 이미 된사람인지 비가입자인지 체크해서 처리

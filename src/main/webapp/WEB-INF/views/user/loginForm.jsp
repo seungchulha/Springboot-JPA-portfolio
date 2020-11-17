@@ -15,7 +15,7 @@
             <div class="justify-">
                 <button id="btn-login" class="btn btn-primary" style="width:250px;">Log In</button><br>
                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=02778e14d6fc171dcf7ffb9b3089baa7&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code"><img height="38px" width="250px" src="/image/kakao_login.jpg" alt=""></a>
-                <a href="/oauth2/authorization/google">구글로그인</a>
+<%--                <a href="/oauth2/authorization/google">구글로그인</a>--%>
             </div>
         </form>
 

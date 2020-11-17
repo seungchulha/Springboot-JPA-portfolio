@@ -84,5 +84,15 @@ public class BoardController {
     public String queryNews(){
         return "/contents/newssearch";
     }
+
+    @GetMapping("/business")
+    public String buisinessNews(){
+        return "/contents/business";
+    }
+
+    @GetMapping("/stocktest")
+    public String stocktest(){
+        return "/contents/stocktest";
+    }
 }
 

@@ -4,13 +4,8 @@
 
 <div class="container">
 
-    <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
 
-    <!-- 글 을 적은 사람만 삭제 및 수정 할수 있도록 ... 그이외의 사람들에게는 수정, 삭제 버튼이 보이지 않도록 -->
-    <c:if test="${board.user.id == principal.user.id}">
-        <a href="/board/${board.id}/updateForm" class="btn btn-warning">Modify</a>
-        <button id="btn-delete" class="btn btn-danger">Delete</button>
-    </c:if>
+
 
 
     <br/><br/>
@@ -19,19 +14,33 @@
         글번호 : <span id="id"><i>${board.id} </i></span>
         작성자 : <span><i>${board.user.username} </i></span>
     </div>
-
     <br/>
+        <div class="d-flex">
+               <h3>${board.title}</h3>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <div>
-            <h3>${board.title}</h3>
+
+            <!-- 글 을 적은 사람만 삭제 및 수정 할수 있도록 ... 그이외의 사람들에게는 수정, 삭제 버튼이 보이지 않도록 -->
+
+                <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>&nbsp;
+                <c:if test="${board.user.id == principal.user.id}">
+                    <a href="/board/${board.id}/updateForm" class="btn btn-warning">Modify</a>&nbsp;
+                    <button id="btn-delete" class="btn btn-danger">Delete</button>
+                </c:if>
+
         </div>
-
         <hr>
-
         <div>
             <div>${board.content}</div>
         </div>
-
         <hr>
 
     <!-- 댓글 -->
@@ -43,7 +52,7 @@
                     <textarea id="reply-content" class="form-control" name="" id="" rows="1"></textarea>
                 </div>
                 <div class="card-footer">
-                    <button type="button" id="btn-reply-save" class="btn btn-primary">register</button>
+                    <button type="button" id="btn-reply-save" class="btn btn-primary" style="float: right;">register</button>
                 </div>
         </form>
     </div>

@@ -1,6 +1,7 @@
 package com.seungchul.portfolio.config;
 
 import com.seungchul.portfolio.config.auth.PrincipalDetailService;
+import com.seungchul.portfolio.oauth.PrincipalOauth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity // filter 를 추가하는 것 (security filter) --> spring security 가 이미 활성 되어있는데 어떤 설정을 해당 파일에서 하겠다 는 의미 ( securityConfig 안에서 == 지금 이 클래스 )
 @EnableGlobalMethodSecurity(prePostEnabled = true) //특정 주소로 접근을 하면 권한 및 인증을 미리 체크 하겠다는 것 // 3가지 annotation은 하나의 세트라고 생각하면 된다!!!
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private PrincipalOauth2UserService principalOauth2UserService;
 
     @Autowired
     private PrincipalDetailService principalDetailService;
@@ -58,6 +62,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/")
                     .and()
                     .oauth2Login()
-                    .loginPage("/auth/loginForm"); // 구글 로그인이 완료된 뒤의 후처리가 필요함. 1. 코드받기(인증), 2. 엑세스토큰 받기 (권한), 3. 권한을 통해서 사용자 프로필 정보를 가져와서 4. 그 정보를 토대로 회원가입을 자동으로 진행시키기도함
+                    .loginPage("/auth/loginForm")
+                    .userInfoEndpoint()
+                    .userService(principalOauth2UserService); // 구글 로그인이 완료된 뒤의 후처리가 필요함. 1. 코드받기(인증), 2. 엑세스토큰 받기 (권한), 3. 권한을 통해서 사용자 프로필 정보를 가져와서 4-1. 그 정보를 토대로 회원가입을 자동으로 진행시키기도함
+                                                    //4-2. 구글이 들고 있는 사용자 프로필에 대한 정보가 내가 회원가입 조건으로 내건 정보 요건에 부족한 부분이 있을때, (추가적인 구성이 필요할때) 자동으로 가입시키는 것이아닌 추가적 창이 나와서 회원가입을 시켜야함
+                                                    // tip. 코트 x, (엑세스토큰 + 사용자 프로필 정보 O)
     }
 }

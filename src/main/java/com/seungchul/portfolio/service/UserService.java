@@ -71,7 +71,7 @@ public class UserService {
         });
 
         //validation check .. updateForm.jsp 의 비밀번호 수정에 oAuth 값에 따라 비밀번호 수정이 가능하게 하는 부분 보호하는 shell => oauth 필드 에 값이 없으면 수정 가능
-        if(persistance.getOauth() == null || persistance.getOauth().equals("")){
+        if(persistance.getProvider() == null || persistance.getProvider().equals("")){
             String rawPassword = user.getPassword();
             String encPassword = encoder.encode(rawPassword);
             persistance.setPassword(encPassword);

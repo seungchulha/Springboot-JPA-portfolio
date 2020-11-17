@@ -10,7 +10,7 @@
                 <input type="text" value="${principal.user.username}" class="form-control" placeholder="Enter email" id="username" readonly>
             </div>
 
-            <c:if test="${empty principal.user.oauth}"> <!-- oAuth 값이 비어있으면 비밀번호 수정 가능 아닐시 불가능 안보임 하지만 postman 같은걸로 공격할수 있으니 서버도 차단해줘야한다. 고로 service.UserService 참고하자-->
+            <c:if test="${empty principal.user.provider}"> <!-- oAuth 값이 비어있으면 비밀번호 수정 가능 아닐시 불가능 안보임 하지만 postman 같은걸로 공격할수 있으니 서버도 차단해줘야한다. 고로 service.UserService 참고하자-->
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" placeholder="Enter password" id="password">
