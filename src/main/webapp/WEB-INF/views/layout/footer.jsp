@@ -9,6 +9,7 @@
         color: black;
     }
 </style>
+
 <br/>
 <div id="footer" class="jumbotron text-center" style="margin-bottom:0">
     <p>Created by Seungchul Ha</p>

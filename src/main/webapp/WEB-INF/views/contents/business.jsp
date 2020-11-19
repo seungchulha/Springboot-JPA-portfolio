@@ -3,6 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 
 <div class="container">
+    <h1>Business</h1><br><br>
     <div id="newsList"></div>
 </div>
 
@@ -17,7 +18,7 @@
         category: "technology",
         success: function(data) {
             console.log(data);
-            console.log(data.articles.length)
+            // console.log(data.articles.length)
 
             var newsCard = "";
             for(var i = 0; i < data.articles.length; i++){
@@ -31,6 +32,7 @@
                 newsCard += "<img src='" + data.articles[i].urlToImage+ "' alt='' style='width: 100%;'></div>";
                 newsCard += "<div class='card-footer'>";
                 newsCard += "<span>" + data.articles[i].description + "</span>";
+                newsCard += "<span>" + data.articles[i].content + "</span>";
                 newsCard += "</div></div><br>";
             }
             document.getElementById("newsList").innerHTML = newsCard;

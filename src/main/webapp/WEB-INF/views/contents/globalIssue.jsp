@@ -4,6 +4,7 @@
 
 
 <div class="container">
+    <h1>Global Issues</h1><br><br>
     <div id="newsList"></div>
 </div>
 
@@ -26,7 +27,7 @@
                 newsCard += "&nbsp; Published At : " + data.articles[i].publishedAt;
                 newsCard += "</div>";
                 newsCard += "<div class='card-body text-center'>";
-                newsCard += "<img height='500px' src='" + data.articles[i].urlToImage+ "' alt=''></div>";
+                newsCard += "<img src='" + data.articles[i].urlToImage+ "' alt='' style='width: 100%;'></div>";
                 newsCard += "<div class='card-footer'>";
                 newsCard += "<h4>" + data.articles[i].description + "</h4>";
                 newsCard += "</div></div><br>";

@@ -99,5 +99,20 @@ public class BoardController {
     public String about(){
         return "/about/about";
     }
+
+    @GetMapping("/corona")
+    public String corona(){
+        return "/contents/coronaNow";
+    }
+
+    @GetMapping("/test")
+    public String test(){
+        return "/test/test";
+    }
+
+    @GetMapping("/test2")
+    public String test2(){
+        return "/layout/header2";
+    }
 }
 

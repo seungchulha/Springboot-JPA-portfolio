@@ -11,7 +11,8 @@
 <head>
     <title>Portfolio</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,7 +25,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-<div class="jumbotron text-center bg-light" style="margin-bottom:0">
+<div class="jumbotron text-center bg-light" style="background-image:url('image/Mount-everest.jpg'); margin-bottom:0">
     <a href="/" style="text-decoration: none; color: black;"><h1>Apex</h1></a>
 </div>
 <%--<h1>${principal}</h1>--%>
@@ -77,6 +78,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/tech">Tech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/corona">Covid-19</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/user/updateForm">회원정보</a>

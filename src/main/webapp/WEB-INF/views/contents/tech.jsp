@@ -3,6 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 
 <div class="container">
+    <h1>Technology</h1><br><br>
     <div id="newsList"></div>
 </div>
 
