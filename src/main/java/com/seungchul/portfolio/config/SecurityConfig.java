@@ -51,21 +51,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http    //해당 주소로 들어오는 것을 허용 한다 (인증 없이)
                 .csrf().disable()// csrf 토큰 비활성화 ( 테스트시 걸어두는 게 좋음)
                 .authorizeRequests()
-                    .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**", "/dummy/**", "/about")
-                    .permitAll()
-                    .anyRequest() // 아닌 모든 페이지는 인증이 필요해 라는 의미이다
-                    .authenticated()
+                .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**", "/dummy/**", "/about")
+                .permitAll()
+                .anyRequest() // 아닌 모든 페이지는 인증이 필요해 라는 의미이다
+                .authenticated()
                 .and()
-                    .formLogin()
-                    .loginPage("/auth/loginForm") // 로그인 form 의로 자동이동
-                    .loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 주소로 요청 오는 로그인을 가로채서 대신 로그인해준다.
-                    .defaultSuccessUrl("/")
-                    .and()
-                    .oauth2Login()
-                    .loginPage("/auth/loginForm")
-                    .userInfoEndpoint()
-                    .userService(principalOauth2UserService); // 구글 로그인이 완료된 뒤의 후처리가 필요함. 1. 코드받기(인증), 2. 엑세스토큰 받기 (권한), 3. 권한을 통해서 사용자 프로필 정보를 가져와서 4-1. 그 정보를 토대로 회원가입을 자동으로 진행시키기도함
-                                                    //4-2. 구글이 들고 있는 사용자 프로필에 대한 정보가 내가 회원가입 조건으로 내건 정보 요건에 부족한 부분이 있을때, (추가적인 구성이 필요할때) 자동으로 가입시키는 것이아닌 추가적 창이 나와서 회원가입을 시켜야함
-                                                    // tip. 코트 x, (엑세스토큰 + 사용자 프로필 정보 O)
+                .formLogin()
+                .loginPage("/auth/loginForm") // 로그인 form 의로 자동이동
+                .loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 주소로 요청 오는 로그인을 가로채서 대신 로그인해준다.
+                .defaultSuccessUrl("/")
+                .and()
+                .oauth2Login()
+                .loginPage("/auth/loginForm")
+                .userInfoEndpoint()
+                .userService(principalOauth2UserService); // 구글 로그인이 완료된 뒤의 후처리가 필요함. 1. 코드받기(인증), 2. 엑세스토큰 받기 (권한), 3. 권한을 통해서 사용자 프로필 정보를 가져와서 4-1. 그 정보를 토대로 회원가입을 자동으로 진행시키기도함
+        //4-2. 구글이 들고 있는 사용자 프로필에 대한 정보가 내가 회원가입 조건으로 내건 정보 요건에 부족한 부분이 있을때, (추가적인 구성이 필요할때) 자동으로 가입시키는 것이아닌 추가적 창이 나와서 회원가입을 시켜야함
+        // tip. 코트 x, (엑세스토큰 + 사용자 프로필 정보 O)
     }
 }

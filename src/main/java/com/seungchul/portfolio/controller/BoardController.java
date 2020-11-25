@@ -105,14 +105,10 @@ public class BoardController {
         return "/contents/coronaNow";
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "/test/test";
+    @GetMapping("/newscenter")
+    public String newscenter(){
+        return "/contents/newscenter";
     }
 
-    @GetMapping("/test2")
-    public String test2(){
-        return "/layout/header2";
-    }
 }
 

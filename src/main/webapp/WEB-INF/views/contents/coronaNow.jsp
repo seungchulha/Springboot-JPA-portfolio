@@ -134,10 +134,7 @@
 
     }
 </script>
-<script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLQasq3QtsJw1arPjV-Hwf3AYBqi0giEI&callback=infoCorona&libraries=&v=weekly"
-        defer
-></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLQasq3QtsJw1arPjV-Hwf3AYBqi0giEI&callback=infoCorona&libraries=&v=weekly" defer></script>
 <%@ include file="../layout/footer.jsp"%>
 </body>
 </html>

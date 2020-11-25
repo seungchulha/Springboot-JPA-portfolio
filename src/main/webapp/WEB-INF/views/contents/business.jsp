@@ -18,8 +18,6 @@
         category: "technology",
         success: function(data) {
             console.log(data);
-            // console.log(data.articles.length)
-
             var newsCard = "";
             for(var i = 0; i < data.articles.length; i++){
                 newsCard += "<div class='card' >";

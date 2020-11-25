@@ -73,6 +73,7 @@
                 <li>Kakao Login through OAuth</li>
                 <li>IEXcloud Finance API</li>
                 <li>NewsAPI</li>
+                <li>Google Map API</li>
             </ul>
             
         </div>

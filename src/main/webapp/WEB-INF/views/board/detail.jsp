@@ -44,8 +44,9 @@
         <hr>
 
     <!-- 댓글 -->
-    <div class="card">
+
         <form>
+            <div class="card">
             <input type="hidden" id="userId" value="${principal.user.id}">
             <input type="hidden" id="boardId" value="${board.id}">
                 <div class="card-body">
@@ -54,8 +55,9 @@
                 <div class="card-footer">
                     <button type="button" id="btn-reply-save" class="btn btn-primary" style="float: right;">register</button>
                 </div>
+            </div>
         </form>
-    </div>
+
     <br>
     <div class="card">
         <div class="card-header">댓글 리스트</div>

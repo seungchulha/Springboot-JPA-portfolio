@@ -24,14 +24,19 @@
             for(var i = 0; i < data.articles.length; i++){
                 newsCard += "<div class='card' >";
                 newsCard += "<div class='card-header'>";
-                newsCard += "<a href='"+ data.articles[i].url + "'><h3>" + data.articles[i].title + "</h3></a>";
+                newsCard += "<a href='"+ data.articles[i].url + "'><h4>" + data.articles[i].title + "</h4></a>";
                 newsCard += "<br><span>Source : " + data.articles[i].source.name + "&nbsp; Author : " + data.articles[i].author;
                 newsCard += "&nbsp; Published At : " + data.articles[i].publishedAt +"</span>";
                 newsCard += "</div>";
-                newsCard += "<div class='card-body text-center'>";
-                newsCard += "<img src='" + data.articles[i].urlToImage+ "' alt='' style='width: 100%;'></div>";
-                newsCard += "<div class='card-footer'>";
-                newsCard += "<span>" + data.articles[i].description + "</span>";
+
+                if(data.articles[i].urlToImage !== null){
+                    newsCard += "<div class='card-body text-center'>";
+                    newsCard += "<img src='" + data.articles[i].urlToImage+ "' alt='' style='width: 100%;'></div>";
+                }
+                if(data.articles[i].description !== null){
+                    newsCard += "<div class='card-footer'>";
+                    newsCard += "<span>" + data.articles[i].description + "</span>";
+                }
                 newsCard += "</div></div><br>";
             }
             document.getElementById("newsList").innerHTML = newsCard;

@@ -15,6 +15,17 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: alaxhenry@gmail.com
+    password: "Tmdcjdahzk12#"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   datasource:
       url: jdbc:mariadb://localhost:3306/portfolio?serverTimezone=Asia/Seoul
       username: alaxhenry
