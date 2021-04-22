@@ -19,7 +19,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: alaxhenry@gmail.com
-    password: "Tmdcjdahzk12#"
+    password: "비밀번호"
     properties:
       mail:
         smtp:
@@ -29,7 +29,7 @@ spring:
   datasource:
       url: jdbc:mariadb://localhost:3306/portfolio?serverTimezone=Asia/Seoul
       username: alaxhenry
-      password: Tmdcjdahzk12#
+      password: 비밀번호
       driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
@@ -53,8 +53,8 @@ spring:
       client:
         registration:
           google:
-            clientId: 470976221479-6v3rg4shi1n2g3ge768hfpu9urkiddkl.apps.googleusercontent.com
-            clientSecret: DTeNR55f6dOB8pJ5oHsg2aRK
+            clientId: 클라이언트 아이디
+            clientSecret: 클라이언트 비밀번호
             scope:
               - email
               - profile
@@ -62,5 +62,5 @@ spring:
 
 #절대 노출되면 안되는 비밀번호 (카카오 로그인 하는 사람들 모두 비밀번호 이하로 통일 됨) 이게 노출되는 순간 모든 OAuth가 뚤린다고 보면된다.
 cos:
-  key: cos1234
+  key: 비밀번호
 
